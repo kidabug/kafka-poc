@@ -44,8 +44,7 @@ public class ProducerService {
 	private String keySerializer;
 	@Value("${value-serializer}")
 	private String valueSerializer;
-	@Value("${topic}")
-	private String topic;
+	
 
 	@PostConstruct
 	private void init() {
@@ -59,7 +58,7 @@ public class ProducerService {
 		props.put("value.serializer", valueSerializer);
 	}
 
-	public void produce() {
+	public void produce(String topic) {
 
 		int i = 0;
 		Scanner in = new Scanner(System.in);

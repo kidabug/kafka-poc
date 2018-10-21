@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * 
+ * Process data from  one or more Kafka topics (topics provided as csv string).
  * @author Aniket Pandit
  *
  */
@@ -38,8 +38,6 @@ public class ConsumerService {
 	private String keyDeserializer;
 	@Value("${value-deserializer}")
 	private String valueDeserializer;
-	@Value("${topic}")
-	private String topic;
 
 	@PostConstruct
 	private void init() {
@@ -51,9 +49,9 @@ public class ConsumerService {
 		props.put("value.deserializer", valueDeserializer);
 	}
 
-	public void consume() {
+	public void consume(String cTopic[]) {
 		KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-		List<String> asList = Arrays.asList(topic);
+		List<String> asList = Arrays.asList(cTopic);
 		consumer.subscribe(asList);
 		try {
 			while (true) {

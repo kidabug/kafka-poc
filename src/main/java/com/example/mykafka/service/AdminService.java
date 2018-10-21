@@ -15,6 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+/**
+ * Admin task, like list topic and helps to check broker state
+ * 
+ * @author Aniket Pandit
+ *
+ */
 @Service
 public class AdminService {
 
@@ -39,12 +45,15 @@ public class AdminService {
 	public void listTopics() {
 		Set<String> topics = getTopics();
 		if (topics != null && !topics.isEmpty()) {
+			System.out.println("---------------------- ");
 			System.out.println("List of topics:- ");
 			System.out.println("---------------------- ");
-			for (String topic : topics)
+			for (String topic : topics) {
 				System.out.println(topic);
+			}
+			System.out.println("---------------------- ");
 		} else {
-			LOG.warn("No topics found..........");
+			LOG.error("No topics found..........");
 		}
 	}
 
