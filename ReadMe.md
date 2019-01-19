@@ -1,4 +1,4 @@
-ReadeME.txt
+ReadeMe
 ------------------
    Instruction to run this Kafka-poc. The Poc supports follwing  functionalities...
    1. producer : On running instance of producer allows an application to publish to one Kafka topic.
